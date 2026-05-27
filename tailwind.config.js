@@ -1,10 +1,14 @@
 export default {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,jsx}"
-    ],
+    content: ["./index.html", "./src/**/*.{js,jsx}"],
     theme: {
-      extend: {},
+      extend: {
+        colors: {
+          debug: "#ff0000",
+        },
+        fontFamily: {
+          sans: ["Inter", "sans-serif"],
+        },
+      },
     },
     plugins: [],
-  }
+  };
