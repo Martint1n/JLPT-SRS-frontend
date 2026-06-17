@@ -1,11 +1,79 @@
 @import "tailwindcss";
 
-@keyframes slide {
-  from {
-    transform: translateX(100%);
-  }
+@theme {
+  --color-accent: #E8B86D;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
 
-  to {
-    transform: translateX(-100%);
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #030b18;
+  color: #e2e8f0;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Planet ── */
+
+.planet-wrapper {
+  animation: float 7s ease-in-out infinite;
+}
+
+.planet {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 62% 30%,
+    #5a8fd4 0%,
+    #2557b0 25%,
+    #0e1f6b 55%,
+    #030a1a 85%
+  );
+  box-shadow:
+    inset -30px -12px 50px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(74, 127, 200, 0.12);
+}
+
+.planet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse 55% 25% at 58% 38%, rgba(255,255,255,0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 28% 18% at 70% 62%, rgba(255,255,255,0.04) 0%, transparent 100%);
+}
+
+
+/* ── Stars ── */
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ── Keyframes ── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.15; }
 }
